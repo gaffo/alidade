@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.assertEquals;
 
-public class FlatMatchTest {
+public class AlidadeTest {
     @Test public void basicField() throws IOException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Alidade alidade = new Alidade();
 

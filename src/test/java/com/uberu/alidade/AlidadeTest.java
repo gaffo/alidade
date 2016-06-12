@@ -34,4 +34,13 @@ public class AlidadeTest {
 
         assertEquals("<tbody></tbody>", toFill.html);
     }
+
+    @Test public void simpleSelector() throws Exception {
+        Alidade alidade = new Alidade();
+
+        LinkBySelector toFill = new LinkBySelector();
+        alidade.fill(toFill, getClass().getResourceAsStream("/link.html"));
+
+        assertEquals("hi", toFill.href);
+    }
 }

@@ -16,4 +16,8 @@ public class AlidadeElement {
     public String attr(String arg) {
         return element.attr(arg);
     }
+
+    public Object innerHtml() {
+        return element.html();
+    }
 }

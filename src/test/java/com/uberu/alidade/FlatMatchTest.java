@@ -25,4 +25,13 @@ public class FlatMatchTest {
 
         assertEquals("hi", toFill.href);
     }
+
+    @Test public void basicHtml() throws Exception {
+        Alidade alidade = new Alidade();
+
+        HtmlPojo toFill = new HtmlPojo();
+        alidade.fill(toFill, getClass().getResourceAsStream("/gethtml.html"));
+
+        assertEquals("<tbody></tbody>", toFill.html);
+    }
 }

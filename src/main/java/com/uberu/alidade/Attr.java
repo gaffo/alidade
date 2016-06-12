@@ -1,6 +1,6 @@
 package com.uberu.alidade;
 
-public class Atrr implements AlidadeGetter {
+public class Attr implements AlidadeGetter {
     private String href;
 
     public Object get(AlidadeElement element, String arg) {

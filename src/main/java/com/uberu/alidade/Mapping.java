@@ -5,5 +5,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Mapping {
-    String value();
+    String css();
+    Class<? extends AlidadeGetter> from();
+    String args() default "";
 }

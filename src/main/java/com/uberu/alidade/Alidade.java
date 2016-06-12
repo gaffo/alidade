@@ -14,23 +14,21 @@ import java.util.Set;
 
 import static org.reflections.ReflectionUtils.withAnnotation;
 
-/**
- * Created by mike on 6/11/2016.
- */
 public class Alidade {
-    public void fill(Object toFill, InputStream resourceAsStream) throws IOException, InvocationTargetException, IllegalAccessException {
+    public void fill(Object toFill, InputStream resourceAsStream) throws IOException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Document soup = Jsoup.parse(resourceAsStream, "UTF-8", "");
 
         Set<Field> fields = ReflectionUtils.getFields(toFill.getClass(), withAnnotation(Mapping.class));
         for (Field field: fields) {
             Mapping mapping = field.getAnnotation(Mapping.class);
-            String css = mapping.value();
+            String css = mapping.css();
             Elements nodes = soup.select(css);
             if (nodes.isEmpty()) {
                 continue;
             }
-            String text = nodes.first().text();
-            FieldUtils.writeField(field, toFill, text);
+
+            AlidadeElement ae = new AlidadeElement(nodes.get(0));
+            FieldUtils.writeField(field, toFill, mapping.from().newInstance().get(ae, mapping.args()));
         }
     }
 }
